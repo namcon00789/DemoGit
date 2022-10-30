@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.reduce2 = function(callback, rlt){
+            let i  = 0;
+            if(arguments.length < 2){
+                i = 1;
+                rlt = this[0];
+            }
+            for(;i< this.length; i++){
+                rlt = callback(rlt, this[i], i, this)
+            }
+            return rlt;
+        }
+        var number = [1, 2, 3, 4, 5]
+
+        var rlt  = number.reduce2((total, number) =>{
+            return total + number;
+        })
+        console.log(rlt);
+    </script>
+</body>
+</html>
